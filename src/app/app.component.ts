@@ -8,7 +8,7 @@ import { FormControl } from '@angular/forms';
 })
 export class AppComponent {
   movieTitle : string = '';
-  result;
+  result : string;
   results = [];
   selectedMovie = '';
   queryField: FormControl = new FormControl();
@@ -38,7 +38,7 @@ export class AppComponent {
 
 
   clickSearch(movieTitle) {
-    this.apiService.getMovie(movieTitle).subscribe(res => this.result = res);
+    this.apiService.getMovie(movieTitle).subscribe(res => this.result = res.toString());
     console.log(this.result);
   }
 }

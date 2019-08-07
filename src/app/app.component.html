@@ -4,11 +4,10 @@
   <h1>Search for movies</h1>
   <section class="filter-wrapper">
     <div class="keyword-wrapper">
-      <input [formControl]="queryField" type="text" id="keyword" placeholder="search for movie..." autofocus />
-      {{selectedMovie.Title}}
+      <input [formControl]="queryField" [value]="selectedMovie" type="text" id="keyword" placeholder="search for movie..." autofocus />
     </div>
     <ul class="filter-select" *ngIf='results' >
-      <li *ngFor="let result of results" (click)="onSelected(result)">
+      <li *ngFor="let result of results" (click)="onSelected(result.Title)">
         <p class="movie-name">
           {{result.Title}}</p>
     </ul>

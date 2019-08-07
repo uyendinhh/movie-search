@@ -17,7 +17,7 @@ export class ApiService {
   getMovie(movieTitle) {
     if (movieTitle.length > 0) {
       let modifiedTitle = movieTitle.split(' ').join('+');
-      return this.httpClient.get<String>(this.baseUrl + modifiedTitle + this.apiKey);
+      return this.httpClient.get<any>(this.baseUrl + modifiedTitle + this.apiKey);
     }
     
   }
