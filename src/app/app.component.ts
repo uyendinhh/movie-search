@@ -15,9 +15,8 @@ export class AppComponent {
 
   constructor(private apiService: ApiService) {
     if (this.queryField.valueChanges) {
-      let valueChanges = this.queryField.valueChanges;
-      
-        valueChanges.subscribe(queryField => this.apiService.getMovie(queryField)
+      this.queryField.valueChanges
+        .subscribe(queryField => this.apiService.getMovie(queryField)
           .subscribe(response => {
             console.log(this.results);
             this.results = [];
