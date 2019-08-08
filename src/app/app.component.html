@@ -1,14 +1,15 @@
 <div class="body">
+
   <div class="search-title">
-      <mat-grid-list cols="1" rowHeight="50px">
-          <mat-grid-tile [colspan]="1">
-            <div>
-              <h1 class="gradient-underline">Search for movies</h1>
-            </div>
-          </mat-grid-tile>
-        </mat-grid-list>
+    <mat-grid-list cols="1" rowHeight="50px">
+      <mat-grid-tile [colspan]="1">
+        <h1 class="gradient-text">Search for movies</h1>
+      </mat-grid-tile>
+    </mat-grid-list>
   </div>
+
   <form class="container">
+
     <mat-form-field class="search-full-width">
       <input type="text" placeholder="Pick a movie" #movieInput matInput [formControl]="myControl"
         [matAutocomplete]="auto">
@@ -16,24 +17,21 @@
         (click)="[movieInput.value='', resetInput()]">
         <mat-icon>x</mat-icon>
       </button>
-      <div>
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let result of results" [value]="result" (click)="onSelected(result)">
-            {{result}}
-          </mat-option>
-        </mat-autocomplete>
-      </div>
-
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let result of results" [value]="result" (click)="onSelected(result)">
+          {{result}}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
-    <span>
-      <div *ngIf='selectedMovies.length > 0'>
-        <button mat-stroked-button *ngFor='let movie of selectedMovies'>{{movie}}
-          <app-icon (click)="deleteMovie(movie)"></app-icon>
-        </button>
-      </div>
+
+    <div *ngIf='selectedMovies.length > 0'>
+      <button mat-stroked-button *ngFor='let movie of selectedMovies'>{{movie}}
+        <app-icon (click)="deleteMovie(movie)"></app-icon>
+      </button>
       <h4 id="warning" *ngIf='has5Movies'>Sorry! You can only add 5 movies at a time.</h4>
-      <h4 id="warning" *ngIf='isDuplicad'>You have selected {{selectedMovie}}, please choose another movie!</h4>
-    </span>
+      <h4 id="warning" *ngIf='isDuplicated'>You have selected {{selectedMovie}}, please choose another movie!</h4>
+    </div>
   </form>
+
   <router-outlet></router-outlet>
 </div>

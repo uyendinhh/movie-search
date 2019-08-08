@@ -7,7 +7,7 @@
 }
 
 
-.gradient-underline {
+.gradient-text {
   background: linear-gradient(to right,#4AC8EF, #8B54A2 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -40,5 +40,6 @@ button.mat-stroked-button {
 }
 
 #warning {
+  font-weight: normal;
   color: orangered;
 }

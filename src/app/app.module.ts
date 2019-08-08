@@ -33,8 +33,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatSelectModule,
     MatButtonModule,
     MatIconModule,
-    MatGridListModule,
-
+    MatGridListModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
