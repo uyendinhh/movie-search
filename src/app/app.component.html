@@ -1,15 +1,39 @@
-<div class="search">
-  <router-outlet></router-outlet>
+<div class="body">
+  <div class="search-title">
+      <mat-grid-list cols="1" rowHeight="50px">
+          <mat-grid-tile [colspan]="1">
+            <div>
+              <h1 class="gradient-underline">Search for movies</h1>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+  </div>
+  <form class="container">
+    <mat-form-field class="search-full-width">
+      <input type="text" placeholder="Pick a movie" #movieInput matInput [formControl]="myControl"
+        [matAutocomplete]="auto">
+      <button color="primary" mat-button matSuffix mat-icon-button aria-label="Clear"
+        (click)="[movieInput.value='', resetInput()]">
+        <mat-icon>x</mat-icon>
+      </button>
+      <div>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let result of results" [value]="result" (click)="onSelected(result)">
+            {{result}}
+          </mat-option>
+        </mat-autocomplete>
+      </div>
 
-  <h1>Search for movies</h1>
-  <section class="filter-wrapper">
-    <div class="keyword-wrapper">
-      <input [formControl]="queryField" [value]="selectedMovie" type="text" id="keyword" placeholder="search for movie..." autofocus />
-    </div>
-    <ul class="filter-select" *ngIf='results' >
-      <li *ngFor="let result of results" (click)="onSelected(result.Title)">
-        <p class="movie-name">
-          {{result.Title}}</p>
-    </ul>
-  </section>
+    </mat-form-field>
+    <span>
+      <div *ngIf='selectedMovies.length > 0'>
+        <button mat-stroked-button *ngFor='let movie of selectedMovies'>{{movie}}
+          <app-icon (click)="deleteMovie(movie)"></app-icon>
+        </button>
+      </div>
+      <h4 id="warning" *ngIf='has5Movies'>Sorry! You can only add 5 movies at a time.</h4>
+      <h4 id="warning" *ngIf='isDuplicad'>You have selected {{selectedMovie}}, please choose another movie!</h4>
+    </span>
+  </form>
+  <router-outlet></router-outlet>
 </div>
